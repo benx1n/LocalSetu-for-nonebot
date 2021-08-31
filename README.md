@@ -1,6 +1,6 @@
 # LocalSetu
 
-基于HoshinoBot v2的本地setu插件
+基于nonebot v2的本地setu插件，目前仍在开发中，[hoshinobot版](https://github.com/benx1n/LocalSetu)
 
 ## 特点
 
@@ -20,39 +20,7 @@
 
 ## 部署方法
 
-1. 在HoshinoBot的插件目录modules下clone本项目 `git clone https://github.com/benx1n/LocalSetu.git`
-2. 在项目文件夹下执行`pip install -r requirements.txt`安装依赖
-3. 获取[sauceNAO apikey](https://saucenao.com/)及[Pixiv refresh_token](https://gist.github.com/upbit/6edda27cb1644e94183291109b8a5fde)
-*   windows环境（其他环境您也可以在windows上得到refresh token后给服务器使用）
-    >在项目文件夹下执行
-    >```
-    >pip install selenium
-    >python pixiv_auth.py login
-    >```
-    >可能会出现Cloudflare验证，手动验证或切换其他代理即可通过<br>
-    >成功后会在窗口内自动显示`refresh_token`<br>
-    >注：如果在墙内访问，请**手动设置** `REQUESTS_KWARGS.proxies` 的代理，不然获取code后无法正确提交请求到Pixiv(现象是 `[INFO] Get code: xxxxx` 后一直卡住，未requests配置代理即可)
-
-
-4. 将配置文件 `config_default.json` 重命名为 `config.json` , 修改配置文件中的设置<br>
-*   若您不准备使用代理，且能正常访问sauceNAO，请在setu.py中作下列修改（若您不能访问sauceNAO，请将配置文件中的on设置为0）
-    >删除get_pixiv_id函数中的`,**_REQUESTS_KWARGS`<br>
-    >修改get_pixiv_tag_url函数中如下部分
-    >```        
-    >api = AppPixivAPI()
-    >api.set_accept_language('zh-cn')
-    >api.auth(refresh_token=refresh_token)
-    >```
-    >更变为
-    >```        
-    >api = ByPassSniApi()
-    >api.require_appapi_hosts(hostname="public-api.secure.pixiv.net")
-    >api.set_accept_language('zh-cn')
-    >api.auth(refresh_token=refresh_token)
-    >```
-5. 将数据库文件`demo.db`重命名为`LocalSetu.db`
-5. 在 `config/__bot__.py`的模块列表里加入 `LocalSetu`
-6. 重启hoshinoBot
+开发中
 
 ## DLC
 
